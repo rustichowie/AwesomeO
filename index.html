@@ -5,8 +5,8 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body>
+		<h1>Welcome to the AwesomeO chat!</h1>
 		<div class="chat">
-			<input type="text" class="chat-name" placeholder="Enter your name"/>
 			<div class="chat-messages">
 			</div>
 			<textarea class="chat-input" placeholder="type your message.."></textarea>
@@ -24,7 +24,6 @@
 				status = getNode('.chat-status span'),
 				messages = getNode('.chat-messages'),
 				textarea = getNode('.chat-input'),
-				chatName = getNode('.chat-name'),
 				statusDefault = status.textContent,
 				setStatus = function(s){
 					status.textContent = s;
@@ -68,7 +67,7 @@
 							//Loop
 							for(var i = 0; i < data.length; i++){
 								var message = document.createElement('div');
-								message.setAttribute('class', 'chat-message');
+								message.setAttribute('class', 'chat-message bot');
 								if(Array.isArray(data[i].message)){
 									for (var j = 0; j < data[i].message.length; j++) {
 										var item = data[i].message[j];
@@ -91,7 +90,7 @@
 
 					textarea.addEventListener('keydown', function(event){
 							var self = this,
-								name = chatName.value;
+								name = 'Håvard';
 
 							if(event.which === 13 && event.shiftKey === false){
 								var message = document.createElement('div');

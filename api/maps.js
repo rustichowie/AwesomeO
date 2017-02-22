@@ -1,8 +1,10 @@
 const settings = require('../setting');
 const unirest = require('unirest');
 const mapJson = (mapObject, start, end) => {
-  console.log(mapObject.routes[0].legs[0].distance);
-  return `Distance between ${start} and ${end}: ${mapObject.routes[0].legs[0].distance.text}`;
+  if(mapObject.routes && mapObject.routes.length > 0){
+    return `Distance between ${start} and ${end}: ${mapObject.routes[0].legs[0].distance.text}`;
+  }
+  return 'No routes available';
 };
 
 module.exports = {
@@ -10,7 +12,7 @@ module.exports = {
     console.log(start, end);
     if(start && end){
       return new Promise((resolve, reject) => {
-      unirest.get(`${settings.directions}?key=${settings.directionsToken}&origin=${start}&destination=${end}`)
+      unirest.get(encodeURI(`${settings.directions}?key=${settings.directionsToken}&origin=${start}&destination=${end}`))
       .headers({
         'Accept': 'application/json; charset=UTF-8'
       })

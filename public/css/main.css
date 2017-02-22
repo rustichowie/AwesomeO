@@ -23,10 +23,15 @@ body, textarea, input {
 	padding: 10px;
 	border-bottom: 0;
 	margin: 0;
+	font-weight: bold;
+}
+.chat-message.bot{
+	color: #4286f4;
 }
 .chat-message {
 	margin-bottom: 10px;
 }
+
 .chat-input {
 	width: 100%;
 	padding: 10px;

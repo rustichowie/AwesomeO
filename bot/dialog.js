@@ -1,6 +1,8 @@
 const settings = require('../setting');
 const unirest = require('unirest');
 const actions = require('./actions');
+
+
 const call = (query, contextId) => {
   return new Promise((resolve, reject) => {
     let url = contextId ? `${settings.luis}&q=${query}&contextid=${contextId}` : `${settings.luis}&q=${query}`;
@@ -31,6 +33,8 @@ const callAction = (result) => {
     }
   })
 };
+
+
 module.exports = {
   callBot: (query, contextId) => {
     return call(query, contextId);
@@ -49,7 +53,6 @@ module.exports = {
             });
             break;
           case 'Finished':
-          console.log("Finished");
             resolve({
               query: botResponse.query,
               doNext: 'action',
